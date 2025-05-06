@@ -1,0 +1,4 @@
+*.env
+
+# Ignore docker compose files
+*.yml
