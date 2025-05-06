@@ -1,0 +1,40 @@
+{
+	"name": "Arquivo Censurado",
+	"description": "Extensão do site arquivocensurado.pt que censura artigos encontrados no Arquivo.pt como o lápis azul no Estado Novo.",
+	"version": "1.0",
+	"manifest_version": 3,
+	"action": {
+		"default_popup": "popup/popup.html",
+		"default_icon": "imgs/logo-arquivo.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://arquivo.pt/wayback/*"
+			],
+			"js": [
+				"contentScript.js"
+			]
+		}
+	],
+	"permissions": [
+		"activeTab",
+		"scripting",
+		"storage"
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"imgs/scribble.png",
+				"imgs/background-texture.jpg",
+				"imgs/aprovado.png",
+				"imgs/autorizado-com-cortes.png",
+				"fonts/*.ttf",
+				"lib/*.js"
+			],
+			"matches": [
+				"<all_urls>"
+			]
+		}
+	]
+}
