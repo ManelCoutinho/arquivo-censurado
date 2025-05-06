@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  app:
+    build: 
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./package.json:/app/package.json
+      - ./.env:/app/.env
+      - node_modules:/app/node_modules
+    networks:
+      - arquivo-pt
+
+networks:
+  arquivo-pt:
+    driver: bridge    
+
+volumes:
+  node_modules:

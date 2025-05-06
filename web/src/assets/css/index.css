@@ -1,0 +1,120 @@
+/* Tailwind base directives – requires PostCSS/tailwind setup */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bs-body-line-height: 1.5;
+	--extensions-btn-width: 215px;
+}
+
+/* Custom global tweaks */
+body {
+	background: url("../img/background-texture.jpg") repeat;
+	line-height: var(--bs-body-line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-semibold;
+}
+
+.censored {
+	position: relative;
+	display: inline;
+	background-image: url("../img/scribble.png");
+	background-repeat: repeat;
+	background-size: auto 1.3em;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
+
+.typewriter-brand {
+	font-family: "Special Elite", monospace;
+}
+
+
+.typewriter-btn {
+	font-family: "Special Elite", monospace;
+	background-color: #222;
+	color: #f9f9f7;
+	border: 2px solid #b4b4b4;
+	border-radius: 9999px;
+	padding: 0.75rem 1.5rem;
+	letter-spacing: 0.5px;
+	text-transform: none;
+	box-shadow: 0 3px 0 #666, inset 0 2px 4px rgba(255, 255, 255, 0.2);
+	transition: transform 60ms;
+}
+
+.typewriter-btn:active:not(:disabled) {
+	transform: translateY(2px);
+	box-shadow: 0 1px 0 #666, inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.typewriter-btn:disabled {
+	opacity: .55;
+	cursor: not-allowed;
+}
+
+/* ─────────────  broken variant with vertical split  ───────────── */
+
+.typewriter-btn.broken {
+	background: none;
+	border: none;
+	color: transparent;
+	box-shadow: none !important;
+	pointer-events: none;
+	position: relative;
+}
+
+/* two side‑by‑side halves */
+.typewriter-btn.broken::before,
+.typewriter-btn.broken::after {
+	content: attr(data-label);
+	position: absolute;
+	inset: 0;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font: inherit;
+	overflow: hidden;
+	background: #222;
+	border: 2px solid #b4b4b4;
+	box-shadow: 0 3px 0 #666, inset 0 2px 4px rgba(255, 255, 255, .2);
+	user-select: none;
+	color: #f9f9f7;
+	white-space: nowrap;
+}
+
+/* LEFT half */
+.typewriter-btn.broken::before {
+	justify-content: flex-start;
+	padding-left: var(--pseudo-padding);
+	left: -2px;
+	border-right: none;
+	border-radius: 9999px 0 0 9999px;
+	transform-origin: center right;
+	transform: translate(-4px, -5px) rotate(-4deg);
+}
+
+/* RIGHT half */
+.typewriter-btn.broken::after {
+	justify-content: flex-end;
+	padding-right: var(--pseudo-padding);
+	left: 50%;
+	border-left: none;
+	border-radius: 0 9999px 9999px 0;
+	transform-origin: center left;
+	transform: translate(4px, -3px) rotate(4deg);
+}
+
+#logo {
+	height: 55px;
+	padding-right: 15px;
+}
